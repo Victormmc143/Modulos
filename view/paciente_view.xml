@@ -32,7 +32,7 @@
                                 </field>
                             </page>
                             <page name="Relacion De Direccion De Paciente" string="Direccion Paciente">
-                                <field name="detail_idsdir" >
+                                <field name="detail_idsdir">
                                     <tree>
                                         <field name="detalleDir"/>
                                         <field name="tipDir"/>
@@ -83,25 +83,22 @@
                 action="paciente_action_view"/>
 
 
-
-
-
         <!-- Top menu item -->
-<!--
-    <menuitem name="Prueba" id="prueba.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="prueba.menu_1" parent="prueba.menu_root"/>
-    <menuitem name="Menu 2" id="prueba.menu_2" parent="prueba.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="prueba.menu_1_list" parent="prueba.menu_1"
-              action="prueba.action_window"/>
-    <menuitem name="Server to list" id="prueba" parent="prueba.menu_2"
-              action="prueba.action_server"/>
--->
+        <!--
+            <menuitem name="Prueba" id="prueba.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="prueba.menu_1" parent="prueba.menu_root"/>
+            <menuitem name="Menu 2" id="prueba.menu_2" parent="prueba.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="prueba.menu_1_list" parent="prueba.menu_1"
+                      action="prueba.action_window"/>
+            <menuitem name="Server to list" id="prueba" parent="prueba.menu_2"
+                      action="prueba.action_server"/>
+        -->
 
     </data>
 </odoo>
