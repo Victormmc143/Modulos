@@ -1,2 +1,2 @@
-from . import consecutivo1
+from . import consecutivo
 from . import paciente

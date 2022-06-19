@@ -25,7 +25,7 @@
                         <notebook>
                             <page name="Relacion De Telefono De Paciente" string="Telefono Paciente">
                                 <field name="detail_idstel">
-                                    <tree>
+                                    <tree editable="bottom">
                                         <field name="detalleTel"/>
                                         <field name="tipTel"/>
                                     </tree>
@@ -43,6 +43,22 @@
                     </sheet>
                 </form>
             </field>
+        </record>
+        <record id="idstel_view_tree" model="ir.ui.view">
+            <field name="name">idstel_view_tree</field>
+            <field name="model">paciente.telefono</field>
+            <field name="arch" type="xml">
+                <tree string="idstel_tree" editable="bottom">
+                    <field name="detalleTel"/>
+                    <field name="tipTel"/>
+                </tree>
+            </field>
+        </record>
+        <record id="detalle_id_view_actions" model="ir.actions.act_window">
+            <field name="name">detalle.id.view.actions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">consecutivo.detalle</field>
+            <field name="view_mode">tree</field>
         </record>
 
         <record id="paciente_tree_view" model="ir.ui.view">
