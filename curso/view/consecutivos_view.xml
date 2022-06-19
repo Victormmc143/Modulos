@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="consecutivo_form_view" model="ir.ui.view">
+            <field name="name">consecutivo.form</field>
+            <field name="model">consecutivo</field>
+            <field name="arch" type="xml">
+                <form string="Consecutivo">
+                    <header>
+                        <button name="asignar_secuencia" type="object" string="Secuencia" class="oe_highlight"
+                                attrs="{'invisible': [('sequence', '>', '0')]}"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,posted,cancel" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Ingresar Nombre"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="dirPto"/>
+                                <field name="sequence_id"/>
+                                <field name="sequence"/>
+                            </group>
+                            <group>
+                                <field name="fechaInicioPto"/>
+                                <field name="fechaFinalPto"/>
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page name="Detalle Consecutivo" string="Detalle De Consecutivo">
+                                <field name="detail_id">
+                                    <tree editable="bottom">
+                                        <field name="tipDoc"/>
+                                        <field name="numSecuencia"/>
+                                        <field name="estado"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="id_consecutivo_view_tree" model="ir.ui.view">
+            <field name="name">id_consecutivo_view_tree</field>
+            <field name="model">consecutivo.detalle</field>
+            <field name="arch" type="xml">
+                <tree string="consecutivo_detalle_tree" editable="bottom">
+                    <field name="tipDoc"/>
+                    <field name="numSecuencia"/>
+                    <field name="estado"/>
+                </tree>
+            </field>
+        </record>
+        <record id="detalle_id_view_actions" model="ir.actions.act_window">
+            <field name="name">detalle.id.view.actions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">consecutivo.detalle</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <record id="consecutivo_tree_view" model="ir.ui.view">
+            <field name="name">consecutivo.tree</field>
+            <field name="model">consecutivo</field>
+            <field name="arch" type="xml">
+                <tree string="consecutivo">
+                    <field name="name"/>
+                    <field name="dirPto"/>
+                    <field name="fechaInicioPto"/>
+                    <field name="fechaFinalPto"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="consecutivo_form_view" model="ir.actions.act_window">
+            <field name="name">Consecutivo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">consecutivo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    click here to add new consecutivo.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+                name="Consecutivo"
+                id="Consecutivo1"
+                parent="account.menu_finance_configuration"
+                action="consecutivo_form_view"/>
+
+
+
+
+
+        <!-- Top menu item -->
+<!--
+    <menuitem name="Prueba" id="prueba.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="prueba.menu_1" parent="prueba.menu_root"/>
+    <menuitem name="Menu 2" id="prueba.menu_2" parent="prueba.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="prueba.menu_1_list" parent="prueba.menu_1"
+              action="prueba.action_window"/>
+    <menuitem name="Server to list" id="prueba" parent="prueba.menu_2"
+              action="prueba.action_server"/>
+-->
+
+    </data>
+</odoo>
