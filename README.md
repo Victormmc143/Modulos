@@ -1,2 +1,0 @@
-# Modulos
-cursos odoo
