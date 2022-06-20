@@ -52,9 +52,15 @@ class Detalleconsecutivo(models.Model):
     _name = 'consecutivo.detalle'
     _description = 'Detalle del Consecutivo'
 
-    tipDoc = fields.Char(
-        string='Tipo De Documento',
-        required=True
+
+    tipDoc = fields.Selection(
+        string='Tipo Consecutivo',
+        selection=[
+            ('1', 'Factura C'),
+            ('2', 'Factura A')
+        ],
+        required=True,
+        default='1'
     )
     numSecuencia = fields.Integer(
         string='Numero De Secuencia',
