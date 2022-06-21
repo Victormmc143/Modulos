@@ -1,5 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 permiso_paciente_modelo,paciente_model_name,model_paciente,,1,1,1,1
-permiso_paciente_datos_modelo,permiso_paciente_datos_modelo,model_paciente_datos,,1,1,1,1
+permiso_paciente_telefono_modelo,permiso_paciente_telefono_modelo,model_paciente_telefono,,1,1,1,1
+permiso_paciente_direccion_modelo,permiso_paciente_direccion_modelo,model_paciente_direccion,,1,1,1,1
 permiso_consecutivo_modelo,consecutivo_model_name,model_consecutivo,,1,1,1,1
 permiso_detalle_consecutivo_modelo,permiso_detalle_consecutivo_modelo,model_consecutivo_detalle,,1,1,1,1
+permiso_departamento_modelo,permiso_departamento_modelo,model_departamento,,1,1,1,1

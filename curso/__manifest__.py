@@ -9,7 +9,8 @@
     'data': [
         'security/ir.model.access.csv',
         'view/consecutivos_view.xml',
-        'view/paciente_view.xml'
+        'view/paciente_view.xml',
+        'view/departamento_view.xml'
     ],
     'installable': True,
     'auto_install': False

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="departamento_form_view" model="ir.ui.view">
+            <field name="name">departamento.form</field>
+            <field name="model">departamento</field>
+            <field name="arch" type="xml">
+                <form string="codigo_dep">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="codigo_dep"  />
+                            </group>
+                            <group>
+                                <field name="nombre_dep"  />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="departamento_tree_view" model="ir.ui.view">
+            <field name="name">departamento.tree</field>
+            <field name="model">departamento</field>
+            <field name="arch" type="xml">
+                <tree string="Departamento">
+                    <field name="codigo_dep"/>
+                    <field name="nombre_dep"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="departamento_action_view" model="ir.actions.act_window">
+            <field name="name">Departamento</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">departamento</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    click here to add new Departamento.
+                </p>
+            </field>
+        </record>
+        <menuitem name="Generales" id="generales_item" parent="historia_clinica_item_menu"/>
+        <menuitem
+                name="Departamento"
+                id="departamento1"
+                parent="generales_item"
+                action="departamento_action_view"/>
+    </data>
+</odoo>
