@@ -19,6 +19,12 @@ class DepartamentoModel(models.Model):
         string='Nombre Departamento',
         required=True)
 
+    mun_dep_id = fields.One2many(
+        comodel_name='municipio',
+        inverse_name='departamento_id',
+        string='Listado De Municipio Paciente'
+    )
+
 
     @api.constrains('codigo_dep')
     def validate_cod_dep(self):
@@ -30,5 +36,7 @@ class DepartamentoModel(models.Model):
     _sql_constraints = [('departamento_unique',
                          'unique(codigo_dep)',
                          'El Codigo Departamento Debe Ser Unico')]
+
+
 
 

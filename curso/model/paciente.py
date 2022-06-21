@@ -70,6 +70,12 @@ class PacienteModel(models.Model):
         string='Departamento',
         required=True
     )
+    municipio_id = fields.Many2one(
+        comodel_name='municipio',
+        string='Municipio',
+        required=True,
+        domain="[('departamento_id', '=' ,departamento_id)]"
+    )
 
 
     # @api.constrains('tipodocumentos','documento')

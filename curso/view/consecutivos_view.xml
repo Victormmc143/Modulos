@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="consecutivo_form_view" model="ir.ui.view">
+        <record id="consecutivo11_form_view" model="ir.ui.view">
             <field name="name">consecutivo.form</field>
             <field name="model">consecutivo</field>
             <field name="arch" type="xml">
-                <form string="Consecutivo">
+                <form string="name">
                     <header>
                         <button name="asignar_secuencia" type="object" string="Secuencia" class="oe_highlight"
                                 attrs="{'invisible': [('sequence', '>', '0')]}"/>

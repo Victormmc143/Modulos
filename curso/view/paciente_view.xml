@@ -39,6 +39,9 @@
                             <group>
                                 <field name="departamento_id"/>
                             </group>
+                            <group>
+                                <field name="municipio_id"  />
+                            </group>
                         </group>
                         <group>
                                 <field name="nom_completo"/>
