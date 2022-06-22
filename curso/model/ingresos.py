@@ -41,15 +41,15 @@ class IngresosModel(models.Model):
         ingreso_id.codigo_ingreso = self.env['ir.sequence'].next_by_code('curso.ingreso.sequence')
         return ingreso_id
 
-    @api.onchange('id_eps')
+    @api.onchange('id_eps','producto_ids')
     def onchange_method(self):
         for record in self:
             if record.id_eps:
                 tarifa_ids = record.id_eps.tarifa_id.examenes_ids
                 for produtc in record.producto_ids:
-                    tarifa_ids.filtered
-                tarifa_ids = record.id_eps.tarifa_id
-                for tarifa in tarifa_ids
+                    productos_tarifas = tarifa_ids.filtered(lambda x:x.examenes_id.id==produtc.examenes_id.id)
+                    if productos_tarifas:
+                        produtc.valor = productos_tarifas.var_examen
 
 
 class IngresoDetallemodel(models.Model):
@@ -68,14 +68,12 @@ class IngresoDetallemodel(models.Model):
     valor = fields.Float(
         string='Valor Del Examen',
         required=True,
-        type='monetary',
-        compute="_compute_valor"
+        type='monetary'
     )
     total = fields.Float(
         string='Total Del Examen',
         required=True,
-        type='monetary',
-        compute="_compute_total"
+        type='monetary'
     )
 
 
