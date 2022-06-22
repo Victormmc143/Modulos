@@ -9,12 +9,12 @@ class IngresosModel(models.Model):
     codigo_ingreso = fields.Char(
         string='Codigo del Ingreso',
         readonly=True,
-        size=7
+
     )
-    fecha_ingreso = fields.DateTime(
+    fecha_ingreso = fields.Datetime(
         string='Fecha de ingreso',
         readonly=True,
-        default=fields.Date.today()
+        default=fields.Datetime.now()
     )
     id_paciente = fields.Many2one(
         comodel_name='paciente',
@@ -27,7 +27,60 @@ class IngresosModel(models.Model):
         required=True
     )
 
-    def create(self,vals):
+    producto_ids = fields.One2many(
+        comodel_name='ingreso.detalle',
+        inverse_name='ingreso_id',
+        string='Listado De Examenes'
+    )
+
+
+
+    @api.model
+    def create(self, vals):
         ingreso_id = super(IngresosModel, self).create(vals)
         ingreso_id.codigo_ingreso = self.env['ir.sequence'].next_by_code('curso.ingreso.sequence')
         return ingreso_id
+
+    @api.onchange('id_eps')
+    def onchange_method(self):
+        for record in self:
+            if record.id_eps:
+                tarifa_ids = record.id_eps.tarifa_id.examenes_ids
+                for produtc in record.producto_ids:
+                    tarifa_ids.filtered
+                tarifa_ids = record.id_eps.tarifa_id
+                for tarifa in tarifa_ids
+
+
+class IngresoDetallemodel(models.Model):
+    _name = 'ingreso.detalle'
+    _description = 'Listado De Examenes'
+
+    examenes_id = fields.Many2one(
+        comodel_name='examenes',
+        string='Examen',
+        required=True
+    )
+    cantidad = fields.Integer(
+        string='cantidad Del Examen',
+        required=True,
+    )
+    valor = fields.Float(
+        string='Valor Del Examen',
+        required=True,
+        type='monetary',
+        compute="_compute_valor"
+    )
+    total = fields.Float(
+        string='Total Del Examen',
+        required=True,
+        type='monetary',
+        compute="_compute_total"
+    )
+
+
+    ingreso_id = fields.Many2one(
+        comodel_name='ingresos',
+        string='Ingresos'
+    )
+

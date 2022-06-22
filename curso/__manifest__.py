@@ -8,6 +8,7 @@
     'depends': ['base', 'account'],
     'data': [
         'security/ir.model.access.csv',
+        'data/ingreso_sequence.xml',
         'view/consecutivos_view.xml',
         'view/paciente_view.xml',
         'view/departamento_view.xml',

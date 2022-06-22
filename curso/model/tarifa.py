@@ -15,7 +15,7 @@ class TarifaModel(models.Model):
     )
     nombre_tarifa = fields.Char(
         string='Nombre Tarifa',
-        required=True)
+        compute="_compute_tarifa")
 
 
 
