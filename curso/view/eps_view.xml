@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="eps_form_view" model="ir.ui.view">
+            <field name="name">eps.form</field>
+            <field name="model">eps</field>
+            <field name="arch" type="xml">
+                <form string="codigo_eps">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="codigo_eps"  />
+                                <field name="nombre_eps"  />
+                            </group>
+                            <group>
+                                <field name="tarifa_id"  />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="eps_tree_view" model="ir.ui.view">
+            <field name="name">eps.tree</field>
+            <field name="model">eps</field>
+            <field name="arch" type="xml">
+                <tree string="eps">
+                    <field name="codigo_eps"/>
+                    <field name="nombre_eps"/>
+                    <field name="tarifa_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="eps_action_view" model="ir.actions.act_window">
+            <field name="name">Eps</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">eps</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    click here to add new eps.
+                </p>
+            </field>
+        </record>
+        <menuitem
+                name="EPS"
+                id="eps"
+                parent="generales_item"
+                action="eps_action_view"/>
+    </data>
+</odoo>

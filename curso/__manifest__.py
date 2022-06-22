@@ -11,7 +11,10 @@
         'view/consecutivos_view.xml',
         'view/paciente_view.xml',
         'view/departamento_view.xml',
-        'view/municipio_view.xml'
+        'view/municipio_view.xml',
+        'view/eps_view.xml',
+        'view/tarifa_view.xml',
+        'view/examenes_view.xml'
     ],
     'installable': True,
     'auto_install': False
