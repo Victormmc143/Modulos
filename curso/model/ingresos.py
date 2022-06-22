@@ -50,6 +50,8 @@ class IngresosModel(models.Model):
                     productos_tarifas = tarifa_ids.filtered(lambda x:x.examenes_id.id==produtc.examenes_id.id)
                     if productos_tarifas:
                         produtc.valor = productos_tarifas.var_examen
+                    else:
+                        produtc.valor = 0
 
 
 class IngresoDetallemodel(models.Model):
