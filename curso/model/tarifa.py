@@ -17,16 +17,12 @@ class TarifaModel(models.Model):
         string='Nombre Tarifa',
         required=True)
 
-    valor_tarifa = fields.Float(
-        string='Valor Tarifa',
-        type='monetary',
-        options='',
-        required=True)
+
 
     examenes_ids = fields.One2many(
         comodel_name='tarifa.examenes',
-        inverse_name='paciente_id',
-        string='Listado De Telefono Paciente'
+        inverse_name='tarifa_id',
+        string='Listado de examenes'
     )
 
     @api.constrains('codigo_tarifa')
@@ -45,15 +41,33 @@ class ExamenesTarifa(models.Model):
     _name = 'tarifa.examenes'
     _description = 'Listado De examenes'
 
-    num_telefono = fields.Char(
-        string='Numero de Telefono',
-        required=True,
-    )
-    tel_principal = fields.Selection(
-        string='Telefono Principal',
-        selection=[
-            ('1', 'SI'),
-            ('2', 'NO')
-        ],
+    examenes_id = fields.Many2one(
+        comodel_name='examenes',
+        string='Examen',
         required=True
     )
+    cod_examen = fields.Char(
+        string='Codigo del examen',
+        required=True,
+        compute="_compute_cod_examen"
+    )
+
+    var_examen = fields.Float(
+        string='Valor del examen',
+        type='monetary',
+        required=True,
+    )
+
+    tarifa_id = fields.Many2one(
+        comodel_name='tarifa',
+        string='Tarifa'
+    )
+
+    @api.depends('examenes_id')
+    def _compute_cod_examen(self):
+        for record in self:
+            record.cod_examen = record.examenes_id.codigo_examen
+
+    _sql_constraints = [('tarifa_examenes_unique',
+                         'unique(examenes_id,tarifa_id)',
+                         'No se puede tener registro duplicado bajo el mismo examen')]

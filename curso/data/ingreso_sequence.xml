@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="ingreso_sequence" model="ir.sequence">
+            <field name="name">secuencia_ingreso</field>
+            <field name="code">curso.ingreso.sequence</field>
+            <field name="prefix">AD</field>
+            <field name="padding">7</field>
+        </record>
+
+    </data>
+</odoo>

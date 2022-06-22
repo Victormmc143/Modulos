@@ -12,16 +12,14 @@
                                 <field name="codigo_tarifa"  />
                                 <field name="nombre_tarifa"  />
                             </group>
-                            <group>
-                                <field name="valor_tarifa"  />
-                            </group>
                         </group>
                         <notebook>
                             <page name="Relacion De Examenes" string="Listado De Examenes">
-                                <field name="telefono_ids">
+                                <field name="examenes_ids">
                                     <tree editable="bottom">
-                                        <field name="num_telefono"/>
-                                        <field name="tel_principal"/>
+                                        <field name="examenes_id"/>
+                                        <field name="cod_examen"/>
+                                        <field name="var_examen"/>
                                     </tree>
                                 </field>
                             </page>
@@ -37,8 +35,7 @@
             <field name="arch" type="xml">
                 <tree string="tarifa">
                     <field name="codigo_tarifa"/>
-                    <field name="nombre_tarifa"/>
-                    <field name="valor_tarifa"  />
+                    <field name="nombre_tarifa"  />
                 </tree>
             </field>
         </record>

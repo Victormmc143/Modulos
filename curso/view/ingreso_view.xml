@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ingreso_form_view" model="ir.ui.view">
+            <field name="name">ingreso.form</field>
+            <field name="model">ingresos</field>
+            <field name="arch" type="xml">
+                <form string="codigo_ingreso">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="codigo_ingreso"  />
+                                <field name="fecha_ingreso"  />
+                                <field name="id_paciente"  />
+                                <field name="id_eps"  />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ingreso_tree_view" model="ir.ui.view">
+            <field name="name">ingreso.tree</field>
+            <field name="model">ingresos</field>
+            <field name="arch" type="xml">
+                <tree string="ingreso">
+                    <field name="codigo_ingreso"  />
+                    <field name="fecha_ingreso"  />
+                    <field name="id_paciente"  />
+                    <field name="id_eps"  />
+                </tree>
+            </field>
+        </record>
+
+        <record id="ingreso_action_view" model="ir.actions.act_window">
+            <field name="name">Ingreso</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ingresos</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    click here to add new Ongreso.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+                name="Ingreso"
+                id="ingreso1"
+                parent="generales_item"
+                action="ingreso_action_view"/>
+    </data>
+</odoo>
