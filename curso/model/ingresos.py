@@ -33,6 +33,26 @@ class IngresosModel(models.Model):
         string='Listado De Examenes'
     )
 
+    nom_paciente = fields.Char(
+        comodel_name='paciente',
+        compute="_compute_nompac"
+    )
+    tarifa = fields.Many2one(
+        comodel_name='tarifa',
+        compute="_compute_tarifa",
+        readonly=True,
+    )
+
+    @api.onchange('id_paciente')
+    def _compute_nompac(self):
+        for record in self:
+            record.nom_paciente = record.env['paciente'].search([('id', '=', record.id_paciente.id)])['nom_completo']
+
+    @api.onchange('id_eps')
+    def _compute_tarifa(self):
+        for record in self:
+            record.tarifa = record.env['tarifa'].search([('id', '=', record.id_eps.tarifa_id.id)])
+
 
 
     @api.model

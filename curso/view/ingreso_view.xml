@@ -10,9 +10,21 @@
                         <group>
                             <group>
                                 <field name="codigo_ingreso"  />
+                            </group>
+                            <group>
                                 <field name="fecha_ingreso"  />
-                                <field name="id_paciente"  />
-                                <field name="id_eps"  />
+                            </group>
+                            <group>
+                                <field name="id_paciente"/>
+                            </group>
+                            <group>
+                                <field name="nom_paciente"/>
+                            </group>
+                            <group>
+                                <field name="id_eps"/>
+                            </group>
+                            <group>
+                                <field name="tarifa"/>
                             </group>
                         </group>
                         <notebook>
