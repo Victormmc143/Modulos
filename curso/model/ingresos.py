@@ -1,4 +1,5 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, _
+from odoo.exceptions import UserError
 
 
 class IngresosModel(models.Model):
@@ -42,6 +43,22 @@ class IngresosModel(models.Model):
         compute="_compute_tarifa",
         readonly=True,
     )
+    tarifa_id = fields.Integer(
+        readonly=True,
+    )
+
+    totalpagar = fields.Float(
+        string='Total A Pagar',
+        readonly=True,
+        type='monetary',
+        compute="_compute_total"
+    )
+
+    @api.depends('id_eps', 'producto_ids')
+    def _compute_total(self):
+        for record in self:
+            for produtc1 in record.producto_ids:
+                record.totalpagar = record.totalpagar+(produtc1.valor*produtc1.cantidad)
 
     @api.onchange('id_paciente')
     def _compute_nompac(self):
@@ -52,8 +69,7 @@ class IngresosModel(models.Model):
     def _compute_tarifa(self):
         for record in self:
             record.tarifa = record.env['tarifa'].search([('id', '=', record.id_eps.tarifa_id.id)])
-
-
+            record.tarifa_id = record.env['tarifa'].search([('id', '=', record.id_eps.tarifa_id.id)])['id']
 
     @api.model
     def create(self, vals):
@@ -61,13 +77,13 @@ class IngresosModel(models.Model):
         ingreso_id.codigo_ingreso = self.env['ir.sequence'].next_by_code('curso.ingreso.sequence')
         return ingreso_id
 
-    @api.onchange('id_eps','producto_ids')
+    @api.onchange('id_eps', 'producto_ids')
     def onchange_method(self):
         for record in self:
             if record.id_eps:
                 tarifa_ids = record.id_eps.tarifa_id.examenes_ids
                 for produtc in record.producto_ids:
-                    productos_tarifas = tarifa_ids.filtered(lambda x:x.examenes_id.id==produtc.examenes_id.id)
+                    productos_tarifas = tarifa_ids.filtered(lambda x: x.examenes_id.id == produtc.examenes_id.id)
                     if productos_tarifas:
                         produtc.valor = productos_tarifas.var_examen
                     else:
@@ -94,13 +110,33 @@ class IngresoDetallemodel(models.Model):
     )
     total = fields.Float(
         string='Total Del Examen',
-        required=True,
-        type='monetary'
+        readonly=True,
+        type='monetary',
+        compute="_compute_valor"
     )
-
 
     ingreso_id = fields.Many2one(
         comodel_name='ingresos',
         string='Ingresos'
     )
 
+    @api.constrains('valor')
+    def _validate_valor_examen(self):
+        for record in self:
+            if record.valor <= 0.0:
+                raise UserError(_("El Valor Del Examen Debe Ser Mayor A 0"))
+
+    @api.constrains('cantidad')
+    def _validate_cantidad_examen(self):
+        for record in self:
+            if record.cantidad <= 0.0:
+                raise UserError(_("La cantidad Debe Ser Mayor A 0"))
+
+    @api.depends('valor', 'cantidad')
+    def _compute_valor(self):
+        for record in self:
+            record.total = record.valor * record.cantidad
+
+    _sql_constraints = [('ingreso_detalle_unique',
+                         'unique(examenes_id,ingreso_id)',
+                         'El Examen no se puede escoger dos veces')]

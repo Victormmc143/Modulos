@@ -5,7 +5,8 @@
             <field name="name">ingreso.form</field>
             <field name="model">ingresos</field>
             <field name="arch" type="xml">
-                <form string="codigo_ingreso">
+                <form string="codigo_ingreso" edit="false">
+
                     <sheet>
                         <group>
                             <group>
@@ -15,23 +16,24 @@
                                 <field name="fecha_ingreso"  />
                             </group>
                             <group>
-                                <field name="id_paciente"/>
+                                <field name="id_paciente" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                             </group>
                             <group>
                                 <field name="nom_paciente"/>
                             </group>
                             <group>
-                                <field name="id_eps"/>
+                                <field name="id_eps" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                             </group>
                             <group>
-                                <field name="tarifa"/>
+                                <field name="tarifa" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                             </group>
                         </group>
+                        <group> <field name="totalpagar" /></group>
                         <notebook>
                             <page name="Relacion De examenes" string="Listado De Examenes">
                                 <field name="producto_ids">
                                     <tree editable="bottom">
-                                        <field name="examenes_id"/>
+                                        <field name="examenes_id" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                                         <field name="cantidad"/>
                                         <field name="valor"/>
                                         <field name="total"/>
@@ -49,7 +51,7 @@
             <field name="model">ingreso.detalle</field>
             <field name="arch" type="xml">
                 <tree string="ingreso_detalle_tree" editable="bottom">
-                    <field name="examenes_id"/>
+                    <field name="examenes_id" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                     <field name="cantidad"/>
                     <field name="valor"/>
                     <field name="total"/>
@@ -71,7 +73,9 @@
                     <field name="codigo_ingreso"  />
                     <field name="fecha_ingreso"  />
                     <field name="id_paciente"  />
+                    <field name="nom_paciente"  />
                     <field name="id_eps"  />
+                    <field name="tarifa"  />
                 </tree>
             </field>
         </record>
@@ -83,7 +87,7 @@
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    click here to add new Ongreso.
+                    click here to add new Ingreso.
                 </p>
             </field>
         </record>

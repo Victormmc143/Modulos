@@ -70,7 +70,6 @@ class ExamenesTarifa(models.Model):
 
     @api.constrains('var_examen')
     def _validate_var_examen(self):
-
         for record in self:
             if record.var_examen <= 0.0:
                 raise UserError(_("El Valor Del Examen Debe Ser Mayor A 0"))
