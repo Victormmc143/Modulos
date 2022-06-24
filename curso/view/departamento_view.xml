@@ -52,7 +52,7 @@
                 </p>
             </field>
         </record>
-        <menuitem name="Generales" id="generales_item" parent="historia_clinica_item_menu"/>
+
         <menuitem
                 name="Departamento"
                 id="departamento1"

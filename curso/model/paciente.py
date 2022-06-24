@@ -138,6 +138,7 @@ class PacienteModel(models.Model):
 class TelefonoPaciente(models.Model):
     _name = 'paciente.telefono'
     _description = 'Listado De Telefono Paciente'
+    _rec_name = 'num_telefono'
 
     num_telefono = fields.Char(
         string='Numero de Telefono',

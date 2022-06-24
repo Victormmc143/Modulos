@@ -15,6 +15,16 @@
                                 <field name="nombre_examen"  />
                             </group>
                         </group>
+                        <notebook>
+                            <page name="Listado De Tarifa" string="Listado de Tarifa">
+                                <field name="tarifa_id">
+                                    <tree editable="false">
+                                        <field name="tarifa_id"/>
+                                        <field name="var_examen"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

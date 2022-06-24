@@ -1,5 +1,5 @@
 from odoo import fields, models, api, _
-from odoo.odoo.exceptions import UserError
+from odoo.exceptions import UserError
 import re
 
 
@@ -17,12 +17,11 @@ class ExamenesModel(models.Model):
         string='Nombre Examen',
         required=True)
 
-    @api.constrains('codigo_examen')
-    def validate_cod_examen(self):
-        if self.codigo_examen:
-            match = re.match('^[0-9][0-9]{1}[0-9]$', self.codigo_examen)
-            if match is None:
-                raise UserError(_('El Codigo de la examen No Es Validado'))
+    tarifa_id = fields.One2many(
+        comodel_name='tarifa.examenes',
+        inverse_name='examenes_id',
+        string='Listado De Tarifa'
+    )
 
     _sql_constraints = [('examen_unique',
                          'unique(codigo_examen',

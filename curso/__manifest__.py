@@ -8,6 +8,7 @@
     'depends': ['base', 'account'],
     'data': [
         'security/ir.model.access.csv',
+        'view/ingreso_view.xml',
         'data/ingreso_sequence.xml',
         'view/consecutivos_view.xml',
         'view/paciente_view.xml',
@@ -15,8 +16,8 @@
         'view/municipio_view.xml',
         'view/eps_view.xml',
         'view/tarifa_view.xml',
-        'view/examenes_view.xml',
-        'view/ingreso_view.xml'
+        'view/examenes_view.xml'
+
     ],
     'installable': True,
     'auto_install': False

@@ -10,15 +10,15 @@
                         <group>
                             <group>
                                 <field name="codigo_tarifa"  />
-                                <field name="nombre_tarifa"  />
+
                             </group>
+                            <group><field name="nombre_tarifa"  /></group>
                         </group>
                         <notebook>
                             <page name="Relacion De Examenes" string="Listado De Examenes">
                                 <field name="examenes_ids">
                                     <tree editable="bottom">
                                         <field name="examenes_id"/>
-                                        <field name="cod_examen"/>
                                         <field name="var_examen"/>
                                     </tree>
                                 </field>

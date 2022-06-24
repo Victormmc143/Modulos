@@ -10,16 +10,28 @@
                         <group>
                             <group>
                                 <field name="codigo_eps"  />
-                                <field name="nombre_eps"  />
                             </group>
+                            <group><field name="nombre_eps"  /></group>
                             <group>
                                 <field name="tarifa_id"  />
                             </group>
                         </group>
+                        <notebook>
+                            <page name="Listado De Tarifa" string="Listado de Tarifa">
+                                <field name="examenes_ids1">
+                                    <tree editable="false">
+                                        <field name="examenes_id"/>
+                                        <field name="var_examen"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
+
+
 
         <record id="eps_tree_view" model="ir.ui.view">
             <field name="name">eps.tree</field>

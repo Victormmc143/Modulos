@@ -75,11 +75,16 @@
                 </p>
             </field>
         </record>
-
+        <menuitem
+                name="Historia Clinica"
+                id="historia_clinica_item_menu"
+                action="ingreso_action_view"/>
+        <menuitem name="Admisiones" id="admisiones_item" parent="historia_clinica_item_menu"/>
+        <menuitem name="Generales" id="generales_item" parent="historia_clinica_item_menu"/>
         <menuitem
                 name="Ingreso"
                 id="ingreso1"
-                parent="historia_clinica_item_menu"
+                parent="admisiones_item"
                 action="ingreso_action_view"/>
     </data>
 </odoo>

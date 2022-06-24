@@ -1,5 +1,5 @@
 from odoo import fields, models, api, _
-from odoo.odoo.exceptions import UserError
+from odoo.exceptions import UserError
 import re
 
 
@@ -11,26 +11,31 @@ class TarifaModel(models.Model):
     codigo_tarifa = fields.Char(
         string='Codigo Tarifa',
         required=True,
-        size=7
+        size=3
     )
     nombre_tarifa = fields.Char(
         string='Nombre Tarifa',
         required=True)
-
-
+    @api.constrains('codigo_tarifa')
+    def _validate_cant_exa(self):
+        mjs = ""
+        if self.codigo_tarifa:
+            match = re.match('^[0-9][0-9]{1}[0-9]$', self.codigo_tarifa)
+            if match is None:
+                mjs = 'El Codigo de la tarifa No Es Validado'+"\n"
+        for record in self:
+            tel = record.env['tarifa.examenes'].search_count([
+                ('tarifa_id', '=', record.id)
+            ])
+            if tel == 0:
+                mjs = mjs + "Por Favor Escoja Un Examen En la Tarifa"
+                raise UserError(_(mjs))
 
     examenes_ids = fields.One2many(
         comodel_name='tarifa.examenes',
         inverse_name='tarifa_id',
         string='Listado de examenes'
     )
-
-    @api.constrains('codigo_tarifa')
-    def validate_cod_tarifa(self):
-        if self.codigo_tarifa:
-            match = re.match('^[0-9][0-9]{1}[0-9]$', self.codigo_tarifa)
-            if match is None:
-                raise UserError(_('El Codigo de la tarifa No Es Validado'))
 
     _sql_constraints = [('tarifa_unique',
                          'unique(codigo_tarifa',
@@ -63,10 +68,19 @@ class ExamenesTarifa(models.Model):
         string='Tarifa'
     )
 
+    @api.constrains('var_examen')
+    def _validate_var_examen(self):
+
+        for record in self:
+            if record.var_examen <= 0.0:
+                raise UserError(_("El Valor Del Examen Debe Ser Mayor A 0"))
+
     @api.depends('examenes_id')
     def _compute_cod_examen(self):
         for record in self:
             record.cod_examen = record.examenes_id.codigo_examen
+
+
 
     _sql_constraints = [('tarifa_examenes_unique',
                          'unique(examenes_id,tarifa_id)',

@@ -10,5 +10,6 @@ permiso_eps_modelo,permiso_eps_modelo,model_eps,,1,1,1,1
 permiso_tarifa_modelo,permiso_tarifa_modelo,model_tarifa,,1,1,1,1
 permiso_examenes_modelo,permiso_examenes_modelo,model_examenes,,1,1,1,1
 permiso_tarifa_examenes_modelo,permiso_tarifa_examenes_modelo,model_tarifa_examenes,,1,1,1,1
-permiso_ingresos_modelo,permiso_ingresos_modelo,model_ingresos,,1,1,1,1
+permiso_ingresos_modelo,permiso_ingresos_modelo,model_ingresos,,1,"0
+",1,1
 permiso_ingreso_detalle_modelo,permiso_ingreso_detalle_modelo,model_ingreso_detalle,,1,1,1,1

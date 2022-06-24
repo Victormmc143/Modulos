@@ -118,6 +118,8 @@
                     <field name="edad"/>
                     <field name="sex"/>
                     <field name="correo"/>
+                    <field name="departamento_id"/>
+                    <field name="municipio_id"/>
                 </tree>
             </field>
         </record>
@@ -135,14 +137,9 @@
         </record>
 
         <menuitem
-                name="Historia Clinica"
-                id="historia_clinica_item_menu"
-                action="paciente_action_view"/>
-
-        <menuitem
                 name="Paciente"
                 id="paciente1"
-                parent="historia_clinica_item_menu"
+                parent="admisiones_item"
                 action="paciente_action_view"/>
 
 

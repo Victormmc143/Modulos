@@ -6,7 +6,7 @@
             <field name="name">secuencia_ingreso</field>
             <field name="code">curso.ingreso.sequence</field>
             <field name="prefix">AD</field>
-            <field name="padding">7</field>
+            <field name="padding">10</field>
         </record>
 
     </data>
