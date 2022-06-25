@@ -54,11 +54,13 @@ class IngresosModel(models.Model):
         compute="_compute_total"
     )
 
-    @api.depends('id_eps', 'producto_ids')
+    @api.onchange('producto_ids', 'id_eps')
     def _compute_total(self):
         for record in self:
-            for produtc1 in record.producto_ids:
-                record.totalpagar = record.totalpagar+(produtc1.valor*produtc1.cantidad)
+            record.totalpagar = 0
+            if record.producto_ids:
+                for produtc1 in record.producto_ids:
+                    record.totalpagar = record.totalpagar+(produtc1.valor*produtc1.cantidad)
 
     @api.onchange('id_paciente')
     def _compute_nompac(self):
@@ -88,6 +90,15 @@ class IngresosModel(models.Model):
                         produtc.valor = productos_tarifas.var_examen
                     else:
                         produtc.valor = 0
+
+    @api.constrains('id_paciente')
+    def _validate_detalle_ingreso(self):
+        for record in self:
+            tel = record.env['ingreso.detalle'].search_count([
+                ('ingreso_id', '=', record.id)
+            ])
+            if tel == 0:
+                raise UserError(_("No Se Puede Guardar El Ingreso Sin Escoger Un Examen"))
 
 
 class IngresoDetallemodel(models.Model):
