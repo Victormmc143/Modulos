@@ -13,14 +13,14 @@
                             </group>
                             <group><field name="nombre_eps"  /></group>
                             <group>
-                                <field name="tarifa_id"  />
+                                <field name="tarifa_id"  options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}" />
                             </group>
                         </group>
                         <notebook>
                             <page name="Listado De Tarifa" string="Listado de Tarifa">
-                                <field name="examenes_ids1">
+                                <field name="examenes_ids1" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}" >
                                     <tree editable="false">
-                                        <field name="examenes_id"/>
+                                        <field name="examenes_id" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                                         <field name="var_examen"/>
                                     </tree>
                                 </field>

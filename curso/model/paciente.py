@@ -77,7 +77,14 @@ class PacienteModel(models.Model):
         domain="[('departamento_id', '=' ,departamento_id)]"
     )
 
-
+    @api.constrains('departamento_id', 'municipio_id')
+    def _validate_municipio(self):
+        for record in self:
+            mun = record.env['municipio'].search_count([
+               ('departamento_id', '=', record.departamento_id.id), ('id', '=', record.municipio_id.id)
+            ])
+            if mun == 0:
+                raise UserError(_("Por Favor Seleccione Un Municipio"))
     # @api.constrains('tipodocumentos','documento')
     # def _validate_documento(self):
     #    for record in self:

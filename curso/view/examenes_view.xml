@@ -18,8 +18,8 @@
                         <notebook>
                             <page name="Listado De Tarifa" string="Listado de Tarifa">
                                 <field name="tarifa_id">
-                                    <tree editable="false">
-                                        <field name="tarifa_id"/>
+                                    <tree editable="true">
+                                        <field name="tarifa_id" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                                         <field name="var_examen"/>
                                     </tree>
                                 </field>

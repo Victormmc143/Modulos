@@ -17,9 +17,9 @@
                         </group>
                         <notebook>
                             <page name="Listado De Municipio" string="Listado de Municipio">
-                                <field name="mun_dep_id">
-                                    <tree editable="false">
-                                        <field name="codigo_mun"/>
+                                <field name="mun_dep_id" >
+                                    <tree editable="true" >
+                                        <field name="codigo_mun" />
                                         <field name="nombre_mun"/>
                                     </tree>
                                 </field>

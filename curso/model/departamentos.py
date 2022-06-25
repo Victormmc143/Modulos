@@ -22,7 +22,7 @@ class DepartamentoModel(models.Model):
     mun_dep_id = fields.One2many(
         comodel_name='municipio',
         inverse_name='departamento_id',
-        string='Listado De Municipio Paciente'
+        string='Listado De Municipio'
     )
 
 

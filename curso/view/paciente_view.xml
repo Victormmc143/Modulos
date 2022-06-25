@@ -37,10 +37,10 @@
                             </group>
                             <group> <field name="correo"/></group>
                             <group>
-                                <field name="departamento_id"/>
+                                <field name="departamento_id" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                             </group>
                             <group>
-                                <field name="municipio_id"  />
+                                <field name="municipio_id" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"  />
                             </group>
                         </group>
                         <group>
