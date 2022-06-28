@@ -86,8 +86,11 @@ class IngresosModel(models.Model):
     @api.onchange('id_eps')
     def _compute_tarifa(self):
         for record in self:
-            record.tarifa = record.env['tarifa'].search([('id', '=', record.id_eps.tarifa_id.id)])
-            record.tarifa_id = record.env['tarifa'].search([('id', '=', record.id_eps.tarifa_id.id)])['id']
+            if record.tarifa_id:
+                record.tarifa = record.env['tarifa'].search([('id', '=', record.tarifa_id)])
+            else:
+                record.tarifa = record.env['tarifa'].search([('id', '=', record.id_eps.tarifa_id.id)])
+                record.tarifa_id = record.env['tarifa'].search([('id', '=', record.id_eps.tarifa_id.id)])['id']
 
     @api.model
     def create(self, vals):
