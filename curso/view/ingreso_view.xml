@@ -27,6 +27,12 @@
                             <group>
                                 <field name="tarifa" options="{'no_open':true,'no_quick_create':true,'no_create_edit':true,'no_create':true}"/>
                             </group>
+                            <group>
+                                <field name="d_cargar"/>
+                            </group>
+                            <group>
+                                <field name="doc_file" attrs="{'invisible': [('d_cargar','=','0')], 'required': [('d_cargar','=','1')]}"/>
+                            </group>
                         </group>
                         <group> <field name="totalpagar" /></group>
                         <notebook>
@@ -76,6 +82,7 @@
                     <field name="nom_paciente"  />
                     <field name="id_eps"  />
                     <field name="tarifa"  />
+                    <field name="totalpagar" />
                 </tree>
             </field>
         </record>

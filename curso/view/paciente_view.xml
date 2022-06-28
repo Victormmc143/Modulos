@@ -111,9 +111,7 @@
                 <tree string="Paciente">
                     <field name="tipo_documentos"/>
                     <field name="documento"/>
-                    <field name="nom1"/>
-                    <field name="ape1"/>
-                    <field name="ape2"/>
+                    <field name="nom_completo"/>
                     <field name="fecha_nacimiento"/>
                     <field name="edad"/>
                     <field name="sex"/>

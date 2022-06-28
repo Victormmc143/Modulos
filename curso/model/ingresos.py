@@ -54,6 +54,22 @@ class IngresosModel(models.Model):
         compute="_compute_total"
     )
 
+    d_cargar = fields.Selection(
+        string='Desea cargar documento ?',
+        selection=[('1', 'Si'),
+                   ('0', 'No')],
+        required=True,
+        default='0',
+    )
+
+    doc_file = fields.Binary(
+        string='Cargar Documento',
+        help='Cargar un documento en caso que lo requiera para el ingreso',
+        attachment=True,
+        store=True
+
+    )
+
     @api.onchange('producto_ids', 'id_eps')
     def _compute_total(self):
         for record in self:
